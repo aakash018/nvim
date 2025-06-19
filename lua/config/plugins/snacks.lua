@@ -79,5 +79,13 @@ return {
     { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
     { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
     { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
-	}
+  {
+    "<leader>nes",
+function()
+ vim.cmd('terminal fish -c "change-env"')
+vim.cmd("startinsert")
+end,
+desc = "Niural Environment Switch"
+  }
+}
 }

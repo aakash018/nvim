@@ -14,6 +14,7 @@ return {
 					"eslint",
 					"ts_ls",
 					"tailwindcss",
+					"harper_ls",
 				},
 			})
 
@@ -32,6 +33,7 @@ return {
 			lspconfig.eslint.setup({})
 			lspconfig.ts_ls.setup({})
 			lspconfig.tailwindcss.setup({})
+			lspconfig.harper_ls.setup({})
 		end,
 	},
 }

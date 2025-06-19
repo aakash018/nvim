@@ -87,7 +87,7 @@ return {
 			["<C-h>"] = { "snippet_backward", "fallback" },
 			["<C-b>"] = { "scroll_documentation_up", "fallback" },
 			["<C-f>"] = { "scroll_documentation_down", "fallback" },
-      ["<CR>"] = {"accept", "fallback"}
+			["<CR>"] = { "accept", "fallback" },
 		},
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },

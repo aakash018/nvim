@@ -5,10 +5,11 @@ vim.g.maplocalleader = "\\"
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 
-
+keymap.set("v", "<", "<gv")
+keymap.set("v", ">", ">gv")
 
 -- Select all
-keymap.set("n", "SA", "ggVGom", {desc= "Select All"})
+keymap.set("n", "SA", "ggVGom", { desc = "Select All" })
 
 keymap.set("n", "<leader>w", ":w<CR>")
 
@@ -34,24 +35,26 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- Rename
+vim.keymap.set("n", "<leader>rn", function()
+	vim.lsp.buf.rename()
+end, { desc = "LSP rename" })
 
-keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-keymap.set('n', '<leader>k', vim.diagnostic.open_float, { desc = 'Open Floating Diagnostic' })
+keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+keymap.set("n", "<leader>k", vim.diagnostic.open_float, { desc = "Open Floating Diagnostic" })
 
+vim.api.nvim_set_keymap("n", "<Tab>", ":bnext<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<S-Tab>", ":bprevious<CR>", { noremap = true, silent = true })
 
-
-vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true })
-
-keymap.set("n", "<leader>X", ":bd!<CR>", {noremap=true, silent=true})
-
+keymap.set("n", "<leader>X", ":bd!<CR>", { noremap = true, silent = true })
 
 -- tmux sessionsier
 vim.api.nvim_create_autocmd("User", {
-  pattern = "VeryLazy", -- or "LazyDone" if you use LazyVim
-  callback = function()
-    vim.keymap.set("n", "<C-f>", function()
-      vim.cmd("terminal bash /Users/aakashkhanal/.config/fish/tmux-sessionizer.bash")
-    end, { desc = "Run tmux sessionizer", noremap = true, silent = true })
-  end,
+	pattern = "VeryLazy",
+	callback = function()
+		vim.keymap.set("n", "<C-f>", function()
+			vim.cmd("terminal bash /Users/aakashkhanal/.config/fish/tmux-sessionizer.bash")
+			vim.cmd("startinsert")
+		end, { desc = "Run tmux sessionizer", noremap = true, silent = true })
+	end,
 })

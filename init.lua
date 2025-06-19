@@ -11,3 +11,5 @@ require("lazy").setup({
 
 -- theme
 vim.cmd.colorscheme("catppuccin")
+vim.g.autoformat = true
+

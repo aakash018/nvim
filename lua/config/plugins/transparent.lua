@@ -5,6 +5,7 @@ local M = {
 
 function M.config()
 	require("transparent").setup({
+    active = true,
 		groups = {
 			"Normal",
 			"NormalNC",
